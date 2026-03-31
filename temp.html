@@ -11,15 +11,14 @@
     <title>장학금 관리 시스템</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
-        body { font-family: 'Noto Sans KR', sans-serif; touch-action: manipulation; }
         .loading-bar { width: 0%; transition: width 2.5s linear; }
+        body { touch-action: manipulation; }
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
         input[type=number] { -moz-appearance: textfield; appearance: textfield; }
     </style>
 </head>
-<body class="bg-gray-100 min-h-screen flex flex-col">
+<body class="bg-gray-100 font-sans min-h-screen flex flex-col">
 
     <header class="bg-[#002C5F] text-white h-14 px-4 flex items-center justify-between shadow-md shrink-0">
         <div class="flex items-center">
@@ -29,9 +28,9 @@
             </h1>
         </div>
         <button onclick="location.href='login.html'" 
-            class="bg-white text-[#002C5F] px-3 py-1 rounded-full text-[11px] font-bold hover:bg-gray-200 transition shadow-sm whitespace-nowrap">
-            로그인
-        </button>
+        class="bg-white text-[#002C5F] px-3 py-1 rounded-full text-[11px] font-bold hover:bg-gray-200 transition shadow-sm whitespace-nowrap">
+    로그인
+</button>
     </header>
 
     <main class="flex-grow flex flex-col justify-center items-center px-6 pb-16">
@@ -42,13 +41,13 @@
             
             <div class="bg-blue-50 p-4 rounded-lg mb-8 border-l-4 border-blue-500">
                 <p class="text-[11px] text-blue-800 leading-relaxed">
-                    금학기 장학금 집행 후 발생한 잔여 예산을 바탕으로 추가 지급 대상자를 선별하였습니다. 아래 본인의 학번을 입력하여 수혜 대상 여부를 확인하시기 바랍니다.
+                    금학기 장학금 집행 후 발생한 잔여 예산을 바탕으로, 미수혜 인원 중 차순위 대상자를 선별하여 추가 지급할 예정입니다. 아래 본인의 학번을 입력하여 수혜 대상 여부를 확인하시기 바랍니다.
                 </p>
             </div>
             
             <div id="input-section" class="flex flex-col items-center">
                 <div class="w-4/5 mb-5">
-                    <label class="block text-[10px] font-bold text-gray-400 mb-1.5 ml-1 text-center uppercase tracking-widest">Student ID</label>
+                    <label class="block text-[10px] font-bold text-gray-400 mb-1.5 ml-1 text-center">학번</label>
                     <input type="number" id="studentId" 
                            placeholder="학번 7자리 입력" 
                            inputmode="numeric"
@@ -65,43 +64,32 @@
             <div id="status-section" class="hidden w-4/5 mx-auto">
                 <div id="loading-container" class="py-6">
                     <div class="flex justify-between mb-2">
-                        <span class="text-[10px] font-bold text-gray-400">서버 데이터 동기화 중...</span>
+                        <span class="text-[10px] font-bold text-gray-400">데이터 조회 중...</span>
                         <span id="percent-text" class="text-[10px] font-bold text-[#002C5F]">0%</span>
                     </div>
                     <div class="w-full bg-gray-100 h-2 rounded-full overflow-hidden">
                         <div id="progress" class="loading-bar bg-[#002C5F] h-full"></div>
                     </div>
                 </div>
-
                 <div id="prank-message" class="hidden text-center py-6">
-                    <div id="fake-result">
-                        <h3 class="text-md font-bold text-gray-800 mb-2">조회 결과</h3>
-                        <p class="text-[11px] text-red-600 font-bold leading-relaxed italic">
-                            "해당 학번은 추가 지급 대상자가 아닙니다."
-                        </p>
-                    </div>
-                    
-                    <div id="real-joke" class="hidden mt-6 pt-4 border-t border-dashed border-gray-200 animate-bounce">
-                        <h3 class="text-3xl font-black text-[#002C5F] italic mb-1">만우절!!</h3>
-                    </div>
+                    <h3 class="text-3xl font-black text-red-600 animate-bounce mb-2">만우절!!</h3>
+                    <p class="text-[11px] text-gray-500 font-bold leading-relaxed">아쉽게도 추가 선발은 없습니다.<br>열심히 공부해서 다음 학기를 노려보세요!</p>
                 </div>
             </div>
         </div>
         
-        <footer class="mt-12 text-center px-4 space-y-2">
+        <footer class="mt-8 text-center px-4 space-y-1">
             <p class="text-[9px] text-gray-400 font-medium tracking-tight">
                 경기도 가라시 어디로 404 본관 4층 404호 학생지원팀 (장학)
             </p>
             <p class="text-[9px] text-gray-400 font-medium tracking-tight">
                 TEL. 02-0401-0401 | FAX. 02-0401-0401
             </p>
-            
-            <p class="text-[9px] text-gray-400 font-mono tracking-tight pt-2 opacity-60 select-all">
+            <p class="text-[9px] text-gray-400 font-medium tracking-tight">
                 Rm91bmQgVGhlIFRydXRo
             </p>
-
-            <div class="w-full flex flex-col items-center py-20 pointer-events-none select-none">
-                <div class="text-sm font-black text-gray-400 opacity-[0.15] rotate-[-2deg] uppercase tracking-[0.3em]">
+            <div class="w-full flex flex-col items-center py-24 pointer-events-none select-none">
+                <div class="text-sm font-black text-gray-400 opacity-[0.20] rotate-[-2deg] uppercase tracking-widest mb-4">
                     Base64
                 </div>
             </div>
@@ -115,41 +103,20 @@
                 alert("정확한 학번 7자리를 입력해 주세요.");
                 return;
             }
-
             document.getElementById('input-section').classList.add('hidden');
             document.getElementById('status-section').classList.remove('hidden');
-
-            // 1. 퍼센트 카운트 및 로딩바 시작
             let count = 0;
-            const percentText = document.getElementById('percent-text');
-            const progress = document.getElementById('progress');
-            
             const counterInterval = setInterval(() => {
-                count += 2;
-                if(count > 100) count = 100;
-                percentText.innerText = count + "%";
+                count += 4; if(count > 100) count = 100;
+                document.getElementById('percent-text').innerText = count + "%";
                 if(count === 100) clearInterval(counterInterval);
-            }, 35);
-            
-            setTimeout(() => { progress.style.width = '100%'; }, 50);
-
-            // 2. 단계별 연출 실행
+            }, 100);
+            setTimeout(() => { document.getElementById('progress').style.width = '100%'; }, 50);
             setTimeout(() => {
-                // [1단계] 로딩 컨테이너 숨기고 가짜 결과 노출
                 document.getElementById('loading-container').classList.add('hidden');
                 document.getElementById('prank-message').classList.remove('hidden');
-
-                // [2단계] 1.5초 후 진짜 정체(만우절) 공개
-                setTimeout(() => {
-                    document.getElementById('real-joke').classList.remove('hidden');
-                    
-                    // [3단계] 2초 후 리다이렉트 (Rickroll)
-                    setTimeout(() => {
-                        window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-                    }, 2000);
-                }, 1500);
-
-            }, 2600); // 로딩 바 완료 타이밍에 맞춰 실행
+                setTimeout(() => { window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"; }, 1500);
+            }, 2500);
         }
     </script>
 </body>
