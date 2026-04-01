@@ -84,6 +84,9 @@
                     <div id="real-joke" class="hidden mt-6 pt-4 border-t border-dashed border-gray-200 animate-bounce">
                         <h3 class="text-3xl font-black text-[#002C5F] italic mb-1">만우절!!</h3>
                     </div>
+                    <div id="base64-hint" class="invisible mt-4 text-sm font-black text-gray-400 rotate-[-2deg] uppercase tracking-[0.3em]">
+                        Base64
+                    </div>
                 </div>
             </div>
         </div>
@@ -95,15 +98,11 @@
             <p class="text-[9px] text-gray-400 font-medium tracking-tight">
                 TEL. 02-0401-0401 | FAX. 02-0401-0401
             </p>
-            
             <p class="text-[9px] text-gray-400 font-mono tracking-tight pt-2 opacity-60 select-all">
                 Rm91bmQgVGhlIFRydXRo
             </p>
 
             <div class="w-full flex flex-col items-center py-20 pointer-events-none select-none">
-                <div class="text-sm font-black text-gray-400 opacity-[0.15] rotate-[-2deg] uppercase tracking-[0.3em]">
-                    Base64
-                </div>
             </div>
         </footer>
     </main>
@@ -133,23 +132,25 @@
             
             setTimeout(() => { progress.style.width = '100%'; }, 50);
 
-           
             setTimeout(() => {
-               
-                document.getElementById('loading-container').classList.add('hidden');
-                document.getElementById('prank-message').classList.remove('hidden');
+            document.getElementById('loading-container').classList.add('hidden');
+            document.getElementById('prank-message').classList.remove('hidden');
 
+            setTimeout(() => {
+                // "만우절!!" 문구 노출
+                document.getElementById('real-joke').classList.remove('hidden');
+                
+                // "Base64" 힌트 텍스트를 "만우절!!" 바로 아래에서 노출
+                const hint = document.getElementById('base64-hint');
+                hint.classList.remove('invisible');
+                hint.classList.add('opacity-100'); 
                 
                 setTimeout(() => {
-                    document.getElementById('real-joke').classList.remove('hidden');
-                    
-                    
-                    setTimeout(() => {
-                        window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-                    }, 2000);
-                }, 1500);
+                    window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+                }, 2000);
+            }, 1500);
 
-            }, 2600); 
+        }, 2600);
         }
     </script>
 </body>
